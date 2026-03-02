@@ -1,0 +1,22 @@
+mlp for action chunks: 
+
+input: noised action chunk (length, dof) 
+output: embedded action chunk (length, dim (usually 512-768))
+
+mlp for proprio: 
+
+input: proprio vector (1, dof_proprio)
+output: proprio token (1, dim (same as action chunk))
+
+action token: concat proprio token (1, dim) + embedded action chunk (length, dim) = action token (length+1, dim)
+
+positional embeddings: 
+
+pos embed (max_seq_len, dim), add it element wise to the concatenated action token 
+
+idm 
+
+input: vae encoded video chunk: (length, embed_dim), action noise level: (tau), noised action chunk at time t: (length, dof)
+output: epsilon: (length, embed_dim) 
+
+loss function: MSE(action chunk at noise t - action chunk at noise t+1)
