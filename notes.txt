@@ -1,14 +1,14 @@
 mlp for action chunks: 
 
-input: noised action chunk (length, dof) 
-output: embedded action chunk (length, dim (usually 512-768))
+input: noised action chunk (B, length, dof) 
+output: embedded action chunk (B, length, action_dim (usually 512-768))
 
 mlp for proprio: 
 
-input: proprio vector (1, dof_proprio)
-output: proprio token (1, dim (same as action chunk))
+input: proprio vector (B, dof)
+output: proprio token (B, 1, action_dim)
 
-action token: concat proprio token (1, dim) + embedded action chunk (length, dim) = action token (length+1, dim)
+action token: concat proprio token (B, 1, action_dim) + embedded action chunk (B, length, action_dim) = action token (B, length + 1, action_dim) 
 
 positional embeddings: 
 
