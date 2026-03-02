@@ -1,0 +1,13 @@
+# Local virtual env and caches
+venv/
+__pycache__/
+*.pyc
+
+# Downloaded model checkpoints and large artifacts
+checkpoints/
+
+# Local dataset previews and generated media
+b1k_preview/
+*.mp4
+*.pt
+*.parquet
