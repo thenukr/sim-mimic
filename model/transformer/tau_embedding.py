@@ -1,6 +1,6 @@
 import torch
 from torch import nn 
-from ..config import tau_embedding_dim
+from ..config import *
 import math 
 
 class TauEmbedding(nn.Module):

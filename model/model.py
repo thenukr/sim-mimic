@@ -1,4 +1,4 @@
-import torch  
-from config import * 
+import torch
+from .config import *
 
 

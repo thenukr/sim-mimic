@@ -1,6 +1,6 @@
 import torch
 from torch import nn 
-from ..config import D_model, hidden_dim
+from ..config import D_model, hidden_dim, action_dim
 
 class SwiGLU(nn.Module):
     def __init__(self):

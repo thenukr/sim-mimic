@@ -1,6 +1,6 @@
 import torch 
 from torch import nn  
-from ..config import D_model, device, n_heads
+from ..config import D_model, device, n_heads, action_dim
 
 
 class MultiHeadAttention(nn.Module): 
