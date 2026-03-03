@@ -12,10 +12,10 @@ image_width = 256
 
 
 context_length = 512    
-D_model = 768
+D_model = action_dim
 n_heads = 12 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 ffn_mult = 8/3
 hidden_dim = int(D_model * ffn_mult)
 n_layers = 32
-vocab_size = 50257
+tau_embedding_dim = 512 
