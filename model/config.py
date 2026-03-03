@@ -19,5 +19,5 @@ n_heads = 8
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 ffn_mult = 8/3
 hidden_dim = int(D_model * ffn_mult)
-n_layers = 32
+n_layers = 8
 tau_embedding_dim = 512 

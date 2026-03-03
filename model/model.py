@@ -1,4 +1,4 @@
 import torch  
+from config import * 
 
-class inverse_dynamics_model(nn.Module):
-    
+

@@ -1,6 +1,6 @@
 import torch 
 from torch import nn  
-from ..config import D_model, device, n_heads
+from config import *  
 
 class MultiHeadCrossAttention(nn.Module):
     def __init__(self):
@@ -48,4 +48,4 @@ class MultiHeadCrossAttention(nn.Module):
         attention_weights = torch.softmax(S, dim=-1) #softmax is applied to all the keys in each query row
         output = attention_weights @ V #(chunk + 1, action_dim) 
 
-        return output 
+        return output   

@@ -3,13 +3,13 @@ from torch import nn
 
 from .config import action_dim, max_seq_len
 
-class PositionalEmbeddings(nn.Module): 
+class PositionalEmbedding(nn.Module): 
     def __init__(self):
         super().__init__() 
         self.max_seq_len = max_seq_len
         self.dim = action_dim
 
-        self.pos_embed = nn.Parameter(torch.randn(max_seq_len, action_dim)) * 0.02 
+        self.pos_embed = nn.Parameter(torch.randn(max_seq_len, action_dim) * 0.02) 
 
         
     def forward(self, tokens):
