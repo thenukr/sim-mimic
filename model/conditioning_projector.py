@@ -1,5 +1,7 @@
-import torch 
-from config import *
+import torch
+from torch import nn
+
+from .config import action_dim
 
 #z latent -> (B, 16, T, H, W) -> (B, T, H, W, 16) -> (B, T * H * W , 16)
 # -> (B, num_patches, 16) -> *(16, action_dim) -> (B, num_patches, action_dim)

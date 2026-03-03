@@ -1,3 +1,5 @@
+import torch
+
 chunk_length = 8 
 dof = 23 
 action_dim = 512 
@@ -13,7 +15,7 @@ image_width = 256
 
 context_length = 512    
 D_model = action_dim
-n_heads = 12 
+n_heads = 8
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 ffn_mult = 8/3
 hidden_dim = int(D_model * ffn_mult)

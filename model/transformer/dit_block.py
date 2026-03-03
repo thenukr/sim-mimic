@@ -1,10 +1,9 @@
 import torch
 from torch import nn 
-from config import * 
-from adaptive_layernorm import AdaLN
-from cross_attention import MultiHeadCrossAttention
-from self_attention import MultiHeadAttention
-from swiglu import SwiGLU
+from .adaptive_layernorm import AdaLN
+from .cross_attention import MultiHeadCrossAttention
+from .self_attention import MultiHeadAttention
+from .swiglu import SwiGLU
 
 class DiTBlock(nn.Module):
     def __init__(self):

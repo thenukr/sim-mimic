@@ -1,5 +1,7 @@
-import torch 
-from config import * 
+import torch
+from torch import nn
+
+from .config import action_dim, max_seq_len
 
 class PositionalEmbeddings(nn.Module): 
     def __init__(self):

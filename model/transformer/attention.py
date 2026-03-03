@@ -1,7 +1,7 @@
 import torch 
 from torch import nn  
 from config import *  
-from .rope import * 
+
 
 
 class MultiHeadAttention(nn.Module): 
@@ -16,10 +16,6 @@ class MultiHeadAttention(nn.Module):
         self.W_v = nn.Linear(D_model, D_model, bias=False)
         self.W_o = nn.Linear(D_model, D_model, bias=False)
 
-        cos, sin = build_rope_cache(self.D_k, device)
-        self.register_buffer("cos", cos)
-        self.register_buffer("sin", sin)
-
 
     def forward(self, X):
         B, T, D_model = X.shape 
@@ -31,11 +27,7 @@ class MultiHeadAttention(nn.Module):
         #reshape (B,T,D_model) -> (B,T,H,D_k) -> (B,H,T,D_k) tranpose 1,2 just swaps them around 
         Q_parallel = Q_full.view(B, T, self.H, self.D_k).transpose(1,2)
         K_parallel = K_full.view(B, T, self.H, self.D_k).transpose(1, 2)
-        V_parallel = V_full.view(B, T, self.H, self.D_k).transpose(1, 2)
-
-        #rope: 
-        Q_parallel = apply_rope(Q_parallel, self.cos, self.sin)
-        K_parallel = apply_rope(K_parallel, self.cos, self.sin)
+        V_parallel = V_full.view(B, T, self.H, self.D_k).transpose(1, 2) 
 
         attn_out = self.ScaledDotProductAttention(Q_parallel, K_parallel, V_parallel) # (B, H, T, D_k)
         # (B, H, T, D_k) needs to be # (B, T, D_model) 

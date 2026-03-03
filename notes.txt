@@ -16,7 +16,35 @@ pos embed (max_seq_len, dim), add it element wise to the concatenated action tok
 
 idm 
 
-input: vae encoded video chunk: (length, embed_dim), action noise level: (tau), noised action chunk at time t: (length, dof)
-output: epsilon: (length, embed_dim) 
+input: action noise level: (tau), noised action chunk at time t: (length, dof)
+cross attention to z: z encoded from (B, 16, length // 4, H/32, W/32) -> (B, (t * h * w), 16)
+output: epsilon: (B, length, dof) 
 
 loss function: MSE(action chunk at noise t - action chunk at noise t+1)
+
+cross attention of X to Z - queries of X and keys and values of Z 
+actions X: (B, chunk_length + 1, action_dim) 
+patches Z: (B, num_patches, action_dim)
+
+proj X query: (chunk_length+1, action_dim) * (action_dim, action_dim)
+-> (chunk_length+1, action_dim) 
+proj Z key: (num_patches, action_dim) * (action_dim, action_dim)
+-> (num_patches, action_dim)
+proj Z value: (num_patches, action_dim) * (action_dim, action_dim)
+-> (num_patches, action_dim)
+
+
+model: 
+
+forward pass: 
+
+concat action proj with proprio proj 
+positionally embed above 
+calculate sinusoidal tau 
+
+idm: 
+input: VAE_latent, action_chunk, proprio 
+1. encode actions 
+2. concatenate proprio 
+3. positionally embed 
+
