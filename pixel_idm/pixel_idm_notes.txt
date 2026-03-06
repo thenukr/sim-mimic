@@ -1,0 +1,23 @@
+
+action tokenizer/encoder: 
+input: action chunk (B, chunk_length, dof)
+1 layer projection (dof, action_dim)
+output: action chunk (B, chunk_length, action_dim)
+
+DiT: 
+
+(B, chunk_length, dof)          noised actions in
+-> action_encoder                project up
+(B, chunk_length, action_dim)
+-> concat proprio token
+(B, chunk_length+1, action_dim)
+-> add positional embeddings
+-> N × DiTBlock:
+    self attention             # action tokens talk to each other
+    cross attention with Z     # action tokens attend to image patches
+    MLP
+(B, chunk_length+1, action_dim)
+-> slice off proprio token
+(B, chunk_length, action_dim)
+-> final linear                  # project back down
+(B, chunk_length, dof)          # predicted vector field out

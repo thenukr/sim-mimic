@@ -1,6 +1,6 @@
 import torch
 from torch import nn 
-from ..config import *
+from video_idm.config import *
 import math 
 
 class TauEmbedding(nn.Module):

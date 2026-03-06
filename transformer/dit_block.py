@@ -1,6 +1,6 @@
 import torch
 from torch import nn 
-from ..config import * 
+from video_idm.config import * 
 from .adaptive_layernorm import AdaLN
 from .cross_attention import MultiHeadCrossAttention
 from .self_attention import MultiHeadAttention

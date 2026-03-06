@@ -4,8 +4,8 @@ from torch import nn
 from .action_encoder import ActionChunkEncoder, ProprioceptionEncoder
 from .config import action_dim, chunk_length, dof, n_layers
 from .positional_embedding import PositionalEmbedding
-from .transformer.tau_embedding import TauEmbedding
-from .transformer.dit_block import DiTBlock
+from transformer.tau_embedding import TauEmbedding
+from transformer.dit_block import DiTBlock
 from .conditioning_projector import VAELatentProjection
 
 class InverseDynamicsModel(nn.Module):
@@ -40,6 +40,5 @@ class InverseDynamicsModel(nn.Module):
 
 
         
-
 
 

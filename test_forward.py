@@ -1,6 +1,6 @@
 import torch
-from model.idm import InverseDynamicsModel
-from model.config import *
+from video_idm.idm import InverseDynamicsModel
+from video_idm.config import *
 
 model = InverseDynamicsModel().to(device)
 

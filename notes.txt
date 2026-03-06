@@ -48,3 +48,8 @@ input: VAE_latent, action_chunk, proprio
 2. concatenate proprio 
 3. positionally embed 
 
+
+
+pixel idm: 
+
+

@@ -1,6 +1,6 @@
 import torch
 from torch import nn 
-from ..config import action_dim, tau_embedding_dim
+from video_idm.config import action_dim, tau_embedding_dim
 
 
 class AdaLN(nn.Module):
